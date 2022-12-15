@@ -13,7 +13,7 @@ contract Factory is Ownable, IFactory {
     function createPool(address nftCollection) external returns (address) {
         require(_pools[nftCollection] == address(0), "Collection Created");
         bytes32 salt = keccak256(abi.encode(nftCollection));
-        Pool pool = new Pool{salt: salt}();
+        Pool pool = new Pool{salt: salt}(nftCollection);
 
         _pools[nftCollection] = address(pool);
         return address(pool);
