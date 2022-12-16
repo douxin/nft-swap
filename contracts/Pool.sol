@@ -56,8 +56,6 @@ contract Pool is IPool, ListOrders, AskOrders {
             listedAt: block.timestamp
         });
 
-        nftCollection.approve(address(this), tokenId);
-
         emit TokenList(msg.sender, address(nftCollection), tokenId);
     }
 
